@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194433973.png">
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194447702.png">
 <meta property="article:published_time" content="2022-05-05T09:15:27.000Z">
-<meta property="article:modified_time" content="2022-05-07T01:49:33.867Z">
+<meta property="article:modified_time" content="2022-05-07T02:22:02.327Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="研究笔记">
 <meta name="twitter:card" content="summary">
@@ -315,7 +315,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/" class="title">Hexo搭建专属网站</a>
+                <a href="/2022/05/05/Docker%E6%95%99%E7%A8%8B/" class="title">Docker学习笔记</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-05-05T09:15:27.000Z" itemprop="datePublished">2022-05-05</time>
@@ -330,7 +330,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2022/05/05/Docker%E6%95%99%E7%A8%8B/" class="title">Docker学习笔记</a>
+                <a href="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/" class="title">Hexo搭建专属网站</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-05-05T09:15:27.000Z" itemprop="datePublished">2022-05-05</time>
@@ -455,6 +455,14 @@ deploy:
 hexo g
 hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<p>5、Hexo部署过程中出现错误</p>
+<p>Error: Spawn failed</p>
+<p>解决办法</p>
+<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;hexo&#x2F;hanyubolg&#x2F;   ##进入站点根目录
+rm -rf .deploy_git&#x2F;				   ##删除git提交内容文件夹
+git config --global core.autocrlf false ##执行
+hexo clean &amp;&amp; hexo g &amp;&amp; hexo d ##最后<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 
       
     </div>
@@ -511,13 +519,9 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/" title="linux服务"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2022/05/05/Docker%E6%95%99%E7%A8%8B/" title="Docker学习笔记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
-    
-    <li class="next">
-      <a href="/2022/05/05/Docker%E6%95%99%E7%A8%8B/" title="Docker学习笔记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
     
     
   </ul>
