@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>linux服务 | JiangGuo</title>
+  <meta name="description" content="1 服务器关机poweroff 2 linux命令查看 系统是ubuntu还是redhat cat &#x2F;etc&#x2F;redhat-release  3 安装g++和gcc yum install gcc gcc-c++  2 docker 相关参考：  https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;78295209 使用 docker images命令即可列出已下载的镜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux服务">
+<meta property="og:url" content="https://xiehans.github.io/2022/05/05/linux%E6%9C%8D%E5%8A%A1/index.html">
+<meta property="og:site_name" content="Welcome to ShanZha&#39;s Blog">
+<meta property="og:description" content="1 服务器关机poweroff 2 linux命令查看 系统是ubuntu还是redhat cat &#x2F;etc&#x2F;redhat-release  3 安装g++和gcc yum install gcc gcc-c++  2 docker 相关参考：  https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;78295209 使用 docker images命令即可列出已下载的镜">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/linux%E6%9C%8D%E5%8A%A1/image-20220505212433086.png">
+<meta property="article:published_time" content="2022-05-05T13:10:16.000Z">
+<meta property="article:modified_time" content="2022-05-06T14:08:50.977Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="服务器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiehans.github.io/2022/05/05/linux%E6%9C%8D%E5%8A%A1/image-20220505212433086.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://xiehans.github.io/2022/05/05/linux%E6%9C%8D%E5%8A%A1/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to ShanZha&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/XieHanS" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">浆果</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Alg &amp; SignalProcessing</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/XieHanS" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.cnblogs.com/xhslovecx" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/" rel="tag">研究笔记</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 14px;">服务器</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">深度学习</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">研究笔记</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/pytorch%E5%AD%A6%E4%B9%A0/" class="title">pytorch学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T13:47:20.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">python学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T13:44:56.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/" class="title">linux服务</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T13:10:16.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/" class="title">Hexo搭建专属网站</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T09:15:27.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/Docker%E6%95%99%E7%A8%8B/" class="title">Docker学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T09:15:27.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-linux服务" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux服务
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/" class="article-date">
+	  <time datetime="2022-05-05T13:10:16.000Z" itemprop="datePublished">2022-05-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><img src="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/image-20220505212433086.png" alt="image-20220505212433086"></p>
+<h1 id="1-服务器关机"><a href="#1-服务器关机" class="headerlink" title="1 服务器关机"></a>1 服务器关机</h1><p>poweroff</p>
+<p>2 linux命令查看 系统是ubuntu还是redhat</p>
+<pre class="line-numbers language-none"><code class="language-none">cat &#x2F;etc&#x2F;redhat-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3 安装g++和gcc</p>
+<pre class="line-numbers language-none"><code class="language-none">yum install gcc gcc-c++<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="2-docker-相关"><a href="#2-docker-相关" class="headerlink" title="2 docker 相关"></a>2 docker 相关</h1><p>参考：  <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78295209">https://zhuanlan.zhihu.com/p/78295209</a></p>
+<p>使用 docker images命令即可列出已下载的镜像</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text"># docker images<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>使用 docker rmi命令即可删除指定镜像</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text"># docker rmi java<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="3-通过Docker部署深度学习项目环境"><a href="#3-通过Docker部署深度学习项目环境" class="headerlink" title="3 通过Docker部署深度学习项目环境"></a>3 通过Docker部署深度学习项目环境</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78541520">https://zhuanlan.zhihu.com/p/78541520</a></p>
+<h1 id="4-docker镜像使用实例"><a href="#4-docker镜像使用实例" class="headerlink" title="4  docker镜像使用实例"></a>4  docker镜像使用实例</h1><p>可以参考：<a target="_blank" rel="noopener" href="https://www.daimajiaoliu.com/daima/7b73b288d3b8809/docker">https://www.daimajiaoliu.com/daima/7b73b288d3b8809/docker</a></p>
+<p>前提条件：</p>
+<p>​    文件夹Datmat：Dockerfile</p>
+<p>​    文件夹DockerBase-Official：Dockerfile</p>
+<p>步骤一：首先将需要的.py文件全部放在对应的Dockerfile文件夹里面</p>
+<p>步骤二：开启docker</p>
+<pre class="line-numbers language-none"><code class="language-none">systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>步骤三：启动基础docker【DockerBase-Official】，这一步的目的是将通用的环境加载进去</p>
+<pre class="line-numbers language-none"><code class="language-none">cd DockerBase-Official
+docker build -t docker_base-official .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>步骤四：根据当前目录的Dockerfile内容构建名为data2mat的镜像，命令中最后的.表示构建的目录路径。</p>
+<pre class="line-numbers language-docker" data-language="docker"><code class="language-docker">docker build -t data2mat .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>步骤五： 运行Docker容器的命令是docker run，这条命令的基础是引用的镜像必须已经构建好。</p>
+<p>docker run的逻辑先搜索本地是否有构建过这个镜像，找不到时会从远端服务器中的仓库拉取最新镜像回来。</p>
+<p>运行docker</p>
+<pre class="line-numbers language-linux" data-language="linux"><code class="language-linux">使用3个cpu运行
+docker run --cpus 3 -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime -v &#x2F;home&#x2F;Docker&#x2F;logs&#x2F;log_test_dat2mat:&#x2F;log -v &#x2F;home&#x2F;Docker&#x2F;matFile:&#x2F;usr&#x2F;src&#x2F;app&#x2F;matFile -v &#x2F;temp&#x2F;ai-ecg&#x2F;data:&#x2F;usr&#x2F;src&#x2F;app&#x2F;datFile -v &#x2F;home&#x2F;Docker&#x2F;result:&#x2F;usr&#x2F;src&#x2F;app&#x2F;result -v &#x2F;home&#x2F;Docker&#x2F;rFile:&#x2F;usr&#x2F;src&#x2F;app&#x2F;rFile --name v0.0.0.1_main_dat2mat -d v0.0.0.1_main_dat2mat
+
+或者
+使用所有的gpu运行，-v 是地址映射，将本机地址映射到docker地址内，冒号：前后分别是本机地址和docker地址
+--name 为容器指定名字
+--d 在后台运行容器并打印容器 ID
+docker run --gpus all -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime -v &#x2F;home&#x2F;Docker&#x2F;logs&#x2F;log_test_dl:&#x2F;log -v &#x2F;home&#x2F;Docker&#x2F;matFile:&#x2F;usr&#x2F;src&#x2F;app&#x2F;matFile -v &#x2F;home&#x2F;Docker&#x2F;datFile:&#x2F;usr&#x2F;src&#x2F;app&#x2F;datFile -v &#x2F;home&#x2F;Docker&#x2F;result:&#x2F;usr&#x2F;src&#x2F;app&#x2F;result -v &#x2F;home&#x2F;Docker&#x2F;result_dl1:&#x2F;usr&#x2F;src&#x2F;app&#x2F;result_dl1 -v &#x2F;home&#x2F;Docker&#x2F;result_dl2:&#x2F;usr&#x2F;src&#x2F;app&#x2F;result_dl2 -v &#x2F;home&#x2F;Docker&#x2F;rFile:&#x2F;usr&#x2F;src&#x2F;app&#x2F;rFile --name v0.0.0.1_main_dl -d v0.0.0.1_main_dl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其他操作：打开docker的环境</p>
+<pre class="line-numbers language-none"><code class="language-none">docker run -it docker_base-official bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="5、docker中容器和镜像的区别"><a href="#5、docker中容器和镜像的区别" class="headerlink" title="5、docker中容器和镜像的区别"></a>5、docker中容器和镜像的区别</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40722827/article/details/102827125">https://blog.csdn.net/qq_40722827/article/details/102827125</a></p>
+<h1 id="6、安装aliyun-python-开发包"><a href="#6、安装aliyun-python-开发包" class="headerlink" title="6、安装aliyun python 开发包"></a>6、安装aliyun python 开发包</h1><pre class="line-numbers language-none"><code class="language-none">pip3 install aliyunsdkcore
+pip3 install aliyun-python-sdk-core
+pip3 install aliyun-python-sdk-ecs
+pip3 install aliyun-python-sdk
+pip3 install aliyun-python-sdk-rds
+pip install aliyun-python-sdk-sts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://xiehans.github.io/2022/05/05/linux%E6%9C%8D%E5%8A%A1/" title="linux服务" target="_blank" rel="external">https://xiehans.github.io/2022/05/05/linux服务/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/XieHanS" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/XieHanS" target="_blank"><span class="text-dark">浆果</span><small class="ml-1x">Alg &amp; SignalProcessing</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/" title="Hexo搭建专属网站"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/XieHanS" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.cnblogs.com/xhslovecx" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+	var infoEle = document.querySelector('#comments .info');
+	if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+		infoEle.childNodes.forEach(function(item) {
+		item.parentNode.removeChild(item);
+	});
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>python学习笔记 | JiangGuo</title>
+  <meta name="description" content="python学习1 安装软件首先要安装python的集成开发环境。conda是跨平台包管理软件，2012年发布，是在数据分析界和Numpy和Scipy一样受欢迎的python工具。conda更多细节可以google。一些conda和anaconda的误解在下面文章可以了解。 http:&#x2F;&#x2F;nooverfit.com&#x2F;wp&#x2F;%E5%85%B3%E4%BA%8Econda%E5%92%8Canacon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习笔记">
+<meta property="og:url" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Welcome to ShanZha&#39;s Blog">
+<meta property="og:description" content="python学习1 安装软件首先要安装python的集成开发环境。conda是跨平台包管理软件，2012年发布，是在数据分析界和Numpy和Scipy一样受欢迎的python工具。conda更多细节可以google。一些conda和anaconda的误解在下面文章可以了解。 http:&#x2F;&#x2F;nooverfit.com&#x2F;wp&#x2F;%E5%85%B3%E4%BA%8Econda%E5%92%8Canacon">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022163019002.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220315191749905.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022172029085.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022171758609.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022180622753.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022181034817.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022190814634.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022191241494.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211130163718905.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211124180548982.png">
+<meta property="article:published_time" content="2022-05-05T13:44:56.000Z">
+<meta property="article:modified_time" content="2022-05-06T14:08:50.979Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="研究笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022163019002.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to ShanZha&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/XieHanS" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">浆果</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Alg &amp; SignalProcessing</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/XieHanS" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.cnblogs.com/xhslovecx" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/" rel="tag">研究笔记</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 14px;">服务器</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 13px;">深度学习</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">研究笔记</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/pytorch%E5%AD%A6%E4%B9%A0/" class="title">pytorch学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T13:47:20.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">python学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T13:44:56.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/" class="title">linux服务</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T13:10:16.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/" class="title">Hexo搭建专属网站</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T09:15:27.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/05/Docker%E6%95%99%E7%A8%8B/" class="title">Docker学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-05T09:15:27.000Z" itemprop="datePublished">2022-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-python学习笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python学习笔记
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+	  <time datetime="2022-05-05T13:44:56.000Z" itemprop="datePublished">2022-05-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/" rel="tag">研究笔记</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="python学习"><a href="#python学习" class="headerlink" title="python学习"></a>python学习</h1><h1 id="1-安装软件"><a href="#1-安装软件" class="headerlink" title="1 安装软件"></a>1 安装软件</h1><p>首先要安装python的集成开发环境。conda是跨平台包管理软件，2012年发布，是在数据分析界和Numpy和Scipy一样受欢迎的python工具。conda更多细节可以google。一些conda和anaconda的误解在下面文章可以了解。</p>
+<p><a target="_blank" rel="noopener" href="http://nooverfit.com/wp/%E5%85%B3%E4%BA%8Econda%E5%92%8Canaconda%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84%E4%BA%8B%E5%AE%9E%E5%92%8C%E8%AF%AF%E8%A7%A3-conda%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">http://nooverfit.com/wp/%E5%85%B3%E4%BA%8Econda%E5%92%8Canaconda%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84%E4%BA%8B%E5%AE%9E%E5%92%8C%E8%AF%AF%E8%A7%A3-conda%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</a></p>
+<h2 id="1-1-win环境下安装anaconda"><a href="#1-1-win环境下安装anaconda" class="headerlink" title="1.1 win环境下安装anaconda"></a>1.1 win环境下安装anaconda</h2><p>安装conda，win环境下可以去官网直接下载并安装</p>
+<p><a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a></p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022163019002.png" alt="image-20211022163019002"></p>
+<p>下载完成双击安装，一路确认。安装完成的anaconda包含 jupyter notebook，Spyder</p>
+<h2 id="1-2-linux环境安装anaconda"><a href="#1-2-linux环境安装anaconda" class="headerlink" title="1.2 linux环境安装anaconda"></a>1.2 linux环境安装anaconda</h2><ol>
+<li>通过 wget 下载 anaconda 安装包</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">wget https:&#x2F;&#x2F;repo.continuum.io&#x2F;archive&#x2F;Anaconda3-2018.12-Linux-x86_64.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>利用 bash 命令安装到 anaconda 文件夹下</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">bash Anaconda3-2018.12-Linux-x86_64.sh -p anaconda&#x2F; -u<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li><p>一直按yes，包括添加到环境</p>
+</li>
+<li><p>如果运行conda –version 显示没有此指令的话，需要把 anaconda 添加到变量中去，执行下面三句命令：</p>
+</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">vim ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="5">
+<li>然后将下面语句添加在./bashrc文件中，其中userNm为用户名字，需要修改为自己的用户名</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">echo &#39;export PATH&#x3D;&quot;&#x2F;home&#x2F;userNm&#x2F;anaconda&#x2F;bin:$PATH&quot;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="6">
+<li>更新配置文件</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">source ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="1-3-Linux环境卸载anaconda"><a href="#1-3-Linux环境卸载anaconda" class="headerlink" title="1.3 Linux环境卸载anaconda"></a>1.3 Linux环境卸载anaconda</h2><p>1）删除整个anaconda目录：<br>  由于Anaconda的安装文件都包含在一个目录中，所以直接将该目录删除即可。</p>
+<pre class="line-numbers language-none"><code class="language-none">rm -rf anaconda<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>2）清理.bashrc中的Anaconda路径：</p>
+<pre class="line-numbers language-none"><code class="language-none">vim ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> 注释掉之前添加的路径(或直接删除)：   #export PATH=/home/userNm/anaconda3/bin:$PATH<br> 3）更新配置文件，使其生效</p>
+<pre class="line-numbers language-none"><code class="language-none">source ~&#x2F;.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="2-python虚拟环境"><a href="#2-python虚拟环境" class="headerlink" title="2 python虚拟环境"></a>2 python虚拟环境</h1><p>linux和win均适配。打开命令窗口，查看已有的虚拟环境</p>
+<pre class="line-numbers language-none"><code class="language-none">conda env list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="2-1-创建环境"><a href="#2-1-创建环境" class="headerlink" title="2.1 创建环境"></a>2.1 创建环境</h2><p>env_name 为自定义环境名字，python=3.8为自定义的python的版本号</p>
+<pre class="line-numbers language-none"><code class="language-none">conda create -n env_name python&#x3D;3.8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="2-2-激活环境变量"><a href="#2-2-激活环境变量" class="headerlink" title="2.2 激活环境变量"></a>2.2 激活环境变量</h2><pre class="line-numbers language-none"><code class="language-none">conda activate env_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="2-3-关闭环境变量"><a href="#2-3-关闭环境变量" class="headerlink" title="2.3 关闭环境变量"></a>2.3 关闭环境变量</h2><pre class="line-numbers language-none"><code class="language-none">conda deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="2-4-删除虚拟环境"><a href="#2-4-删除虚拟环境" class="headerlink" title="2.4 删除虚拟环境"></a>2.4 删除虚拟环境</h2><pre class="line-numbers language-none"><code class="language-none">conda remove -n env_name --all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="3-jupyter-notebook"><a href="#3-jupyter-notebook" class="headerlink" title="3 jupyter notebook"></a>3 jupyter notebook</h1><h2 id="3-1-修改默认路径"><a href="#3-1-修改默认路径" class="headerlink" title="3.1 修改默认路径"></a>3.1 修改默认路径</h2><p>1)、修改配置文件</p>
+<p>打开控制窗，输入下面命令，找到 jupyter_notebook_config.py 的位置</p>
+<pre class="line-numbers language-none"><code class="language-none">jupyter notebook --generate-config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220315191749905.png" alt="image-20220315191749905"></p>
+<p>打开  jupyter_notebook_config.py文件，找到  <strong>#c.NotebookApp.notebook_dir = ‘’</strong> ，将自己的路径填进去，如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">c.NotebookApp.notebook_dir &#x3D; &#39;E:\\Proton\\Git\\JupyterML&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>2)、修改属性的目标信息，将最后双引号那一串字母删掉，然后将自己的路径添加在后面</p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022172029085.png" alt="image-20211022172029085"></p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022171758609.png" alt="image-20211022171758609"></p>
+<p>3)、修改默认打开方式为 “以管理员方式打开”。属性–&gt;快捷方式–&gt;高级–&gt;用管理员身份运行–&gt;确定</p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022180622753.png" alt="image-20211022180622753"></p>
+<h2 id="3-2-添加虚拟环境"><a href="#3-2-添加虚拟环境" class="headerlink" title="3.2 添加虚拟环境"></a>3.2 添加虚拟环境</h2><p>首先输入下面命令，安装 ipykernel</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install --user ipykernel
+# 只能用pip，conda 会出错<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>然后将环境写入notebook的kernel中，其中env_name为环境名字</p>
+<pre class="line-numbers language-none"><code class="language-none">python -m ipykernel install --user --name&#x3D;env_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="3-3-移除jupyter-Notebook的内核"><a href="#3-3-移除jupyter-Notebook的内核" class="headerlink" title="3.3 移除jupyter Notebook的内核"></a>3.3 移除jupyter Notebook的内核</h2><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">jupyter kernelspec remove env_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="4-克隆环境"><a href="#4-克隆环境" class="headerlink" title="4 克隆环境"></a>4 克隆环境</h1><h2 id="4-1-本地电脑clone"><a href="#4-1-本地电脑clone" class="headerlink" title="4.1 本地电脑clone"></a>4.1 本地电脑clone</h2><p>在本地的conda里已经存在py37的环境，想创建一个和py37相同的新环境，命令如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">conda create -n copyenv --clone py37<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>完成之后会出现如下界面</p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022181034817.png" alt="image-20211022181034817"></p>
+<h2 id="4-2-A电脑clone到B电脑。"><a href="#4-2-A电脑clone到B电脑。" class="headerlink" title="4.2 A电脑clone到B电脑。"></a>4.2 A电脑clone到B电脑。</h2><p>​    1）首先查看A电脑目标conda环境的目录</p>
+<pre class="line-numbers language-none"><code class="language-none">conda env list
+#或
+conda info -e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>​    <img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022190814634.png" alt="image-20211022190814634"></p>
+<p>2）然后 把对应环境的文件夹整个copy到B电脑的某个文件夹下面，如”G:\project\lym”，再打开B电脑的命令窗口，输入下面命令。其中，pytorchEnv是B电脑新环境的名字，”G:\project\lym”为从A电脑copy过来的环境。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">conda create <span class="token operator">-</span>n pytorchEnv <span class="token operator">-</span><span class="token operator">-</span>clone G<span class="token punctuation">:</span>\project\lym<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>有时候需要指定环境的路径，可以使用命令</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">conda create <span class="token operator">-</span>p E<span class="token punctuation">:</span>\Anaconda3\env\QRSArrhyNsvfqModel <span class="token operator">-</span><span class="token operator">-</span>clone E<span class="token punctuation">:</span>\环境\QRSArrhyNsvfqModel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3）clone完成之后会出现下面界面，整个过程速度非常快。</p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211022191241494.png" alt="image-20211022191241494"></p>
+<h2 id="4-3-clone的环境注意事项"><a href="#4-3-clone的环境注意事项" class="headerlink" title="4.3 clone的环境注意事项"></a>4.3 clone的环境注意事项</h2><p>1）jupyter的使用</p>
+<p>首先查看是否安装ipykernel，如果没有，则按照3.2操作。如果有，只需要用下面命令 将环境写入notebook的kernel中。</p>
+<pre class="line-numbers language-none"><code class="language-none">python -m ipykernel install --user --name&#x3D;pytorch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="5-修改pycharm的运行环境"><a href="#5-修改pycharm的运行环境" class="headerlink" title="5 修改pycharm的运行环境"></a>5 修改pycharm的运行环境</h1><p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211130163718905.png" alt="image-20211130163718905"></p>
+<p><img src="/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211124180548982.png" alt="image-20211124180548982"></p>
+<h1 id="6-后台运行"><a href="#6-后台运行" class="headerlink" title="6 后台运行"></a>6 后台运行</h1><pre class="line-numbers language-none"><code class="language-none">nohup python3 -u testPy.python &gt;log.txt 2&gt;&amp;1 &amp; 
+nohup python3 -u trainModel_GPU.py &gt;V5.1trainLog.txt 2&gt;&amp;1 &amp;
+jobs -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="7-Python-命令行参数的3种传入方式"><a href="#7-Python-命令行参数的3种传入方式" class="headerlink" title="7 Python 命令行参数的3种传入方式"></a>7 Python 命令行参数的3种传入方式</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://tendcode.com/article/python-shell/">https://tendcode.com/article/python-shell/</a></p>
+<h2 id="7-1-sys-argv-模块"><a href="#7-1-sys-argv-模块" class="headerlink" title="7.1 sys.argv 模块"></a>7.1 sys.argv 模块</h2><p>这个模块是我在工作中最常见的其他人写的 Python 脚本传入命令行参数的方式，也是最简单（粗暴）的方式。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*- coding:utf-8 -*-</span>
+<span class="token comment"># @Date  : 2021/12/10</span>
+
+<span class="token keyword">import</span> sys
+
+<span class="token keyword">def</span> <span class="token function">test_for_sys</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> name<span class="token punctuation">,</span> body<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'the year is'</span><span class="token punctuation">,</span> year<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'the name is'</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'the body is'</span><span class="token punctuation">,</span> body<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        year<span class="token punctuation">,</span> name<span class="token punctuation">,</span> body <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span>
+        test_for_sys<span class="token punctuation">(</span>year<span class="token punctuation">,</span> name<span class="token punctuation">,</span> body<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>很好理解，由于 <code>sys.argv</code> 是一个由参数组成的列表，所以如果脚本中需要的参数比你命令行中输入的多，那肯定会报错，因为你输入的参数不够，反过来，如果你输入的参数比函数需要的多，那么无所谓，多的参数因为不会被提取使用，所以不影响脚本运行。</p>
+<p>小结：<code>sys.argv</code> 形式传入参数的方式比较简单，但是也很死板，因为传入的参数是一个有序的列表，所以在命令行中必须按照脚本规定的顺序去输入参数，这种方法比较适合脚本中需要的参数个数很少且参数固定的脚本。</p>
+<h2 id="7-2-argparse-模块"><a href="#7-2-argparse-模块" class="headerlink" title="7.2 argparse 模块"></a>7.2 argparse 模块</h2><p><code>argparse</code> 模块也是 Python 自带的一个命令行参数模块，这个模块才是真的为了命令行参数而生的模块，相较之下 <code>sys.argv</code> 只是碰巧可以用在命令行参数上面而已。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*- coding:utf-8 -*-</span>
+<span class="token comment"># @Date  : 2019/2/27</span>
+
+<span class="token keyword">import</span> argparse
+
+
+<span class="token keyword">def</span> <span class="token function">test_for_sys</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> name<span class="token punctuation">,</span> body<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'the year is'</span><span class="token punctuation">,</span> year<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'the name is'</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'the body is'</span><span class="token punctuation">,</span> body<span class="token punctuation">)</span>
+
+
+parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">'Test for argparse'</span><span class="token punctuation">)</span>
+parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--name'</span><span class="token punctuation">,</span> <span class="token string">'-n'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'name 属性，非必要参数'</span><span class="token punctuation">)</span>
+parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--year'</span><span class="token punctuation">,</span> <span class="token string">'-y'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'year 属性，非必要参数，但是有默认值'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">2017</span><span class="token punctuation">)</span>
+parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--body'</span><span class="token punctuation">,</span> <span class="token string">'-b'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'body 属性，必要参数'</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        test_for_sys<span class="token punctuation">(</span>args<span class="token punctuation">.</span>year<span class="token punctuation">,</span> args<span class="token punctuation">.</span>name<span class="token punctuation">,</span> args<span class="token punctuation">.</span>body<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用 <code>argparse</code> 模块的方式也挺简单的，首先需要构建一个参数实例，也就是代码中的</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">'Test for argparse'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这行代码就生成了一个命令行参数的对象，之后就可以给对象添加一些参数属性，最后只需要从属性从提取传入的参数进行使用即可。</p>
+<p>上面的代码添加了3个参数，添加参数的前两个字段很容易理解，<code>--name</code> 和 <code>-n</code> 都可以用来在命令行中使用，都表示了参数 <code>name</code>，这样后面使用 <code>parse_args()</code> 方法获取到所有参数之后，就可以使用 <code>args.name</code> 这种形式来提取对应的参数。</p>
+<p>看一下运行成功的几个命令，首先是不传入 year 参数，而使用默认的参数：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">G<span class="token punctuation">:</span>\Allcodes\testscripts<span class="token operator">></span>python test_cmd<span class="token punctuation">.</span>py <span class="token operator">-</span>n Leijun <span class="token operator">-</span><span class="token operator">-</span>body <span class="token string">"are you ok?"</span>
+the year <span class="token keyword">is</span> <span class="token number">2017</span>
+the name <span class="token keyword">is</span> Leijun
+the body <span class="token keyword">is</span> are you ok?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="8-使用Python语言调用C-的so链接库"><a href="#8-使用Python语言调用C-的so链接库" class="headerlink" title="8 使用Python语言调用C++ 的so链接库"></a>8 使用Python语言调用C++ 的so链接库</h1><pre class="line-numbers language-none"><code class="language-none">&#39;&#39;&#39;
+&#39;&#39;&#39;
+from ctypes import cdll  
+cur &#x3D; cdll.LoadLibrary(&#39;.&#x2F;libmax.so&#39;)  
+a &#x3D; cur.max(1, 2)
+print(a)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="9-更改pip-anaconda镜像源，加快python模块安装速度"><a href="#9-更改pip-anaconda镜像源，加快python模块安装速度" class="headerlink" title="9 更改pip/anaconda镜像源，加快python模块安装速度"></a>9 更改pip/anaconda镜像源，加快python模块安装速度</h1><p>国内源：<br>新版ubuntu要求使用https源，要注意。<br>清华：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>阿里云：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学 <a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>华中科技大学：<a target="_blank" rel="noopener" href="http://pypi.hustunique.com/">http://pypi.hustunique.com/</a><br>山东理工大学：<a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org/</a><br>豆瓣：<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a> </p>
+<h2 id="9-1-WIN环境："><a href="#9-1-WIN环境：" class="headerlink" title="9.1 WIN环境："></a>9.1 WIN环境：</h2><p>进入文件”C:\Users\XHS”中，新建文件夹pip，在pip文件夹中新建文件pip.ini，打开该文件，写入内容</p>
+<pre class="line-numbers language-none"><code class="language-none">[global]
+index-url &#x3D; https:&#x2F;&#x2F;pypi.mirrors.ustc.edu.cn&#x2F;simple&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">pip3 config set global.index-url https:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查看使用的镜像源</p>
+<pre class="line-numbers language-none"><code class="language-none">pip3 config list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="9-2-Linux环境："><a href="#9-2-Linux环境：" class="headerlink" title="9.2 Linux环境："></a>9.2 Linux环境：</h2><pre class="line-numbers language-none"><code class="language-none">mkdir ~&#x2F;.pip
+cd ~&#x2F;.pip
+vi pip.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="9-3-conda环境"><a href="#9-3-conda环境" class="headerlink" title="9.3 conda环境"></a>9.3 conda环境</h2><pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp">conda config <span class="token operator">--</span><span class="token keyword">add</span> <span class="token class-name">channels</span> https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>mirrors<span class="token punctuation">.</span>tuna<span class="token punctuation">.</span>tsinghua<span class="token punctuation">.</span>edu<span class="token punctuation">.</span>cn<span class="token operator">/</span>anaconda<span class="token operator">/</span>pkgs<span class="token operator">/</span>free<span class="token operator">/</span>
+
+conda config <span class="token operator">--</span><span class="token keyword">set</span> show_channel_urls yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>此时，目录 C:\Users&lt;你的用户名&gt; 下就会生成配置文件.condarc，内容如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">channels:
+  - https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;
+  - defaults<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>删除上述配置文件 .condarc 中的第三行，然后保存，最终版本文件如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">channels:
+  - https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>通过命令 conda info 查看当前配置信息</p>
+<h1 id="10-matlab"><a href="#10-matlab" class="headerlink" title="10 matlab"></a>10 matlab</h1><p>matlab调用python的模型</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://xiehans.github.io/2022/05/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记" target="_blank" rel="external">https://xiehans.github.io/2022/05/05/python学习笔记/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/XieHanS" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/XieHanS" target="_blank"><span class="text-dark">浆果</span><small class="ml-1x">Alg &amp; SignalProcessing</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/05/05/pytorch%E5%AD%A6%E4%B9%A0/" title="pytorch学习"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/05/05/linux%E6%9C%8D%E5%8A%A1/" title="linux服务"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/XieHanS" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.cnblogs.com/xhslovecx" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+	var infoEle = document.querySelector('#comments .info');
+	if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+		infoEle.childNodes.forEach(function(item) {
+		item.parentNode.removeChild(item);
+	});
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
