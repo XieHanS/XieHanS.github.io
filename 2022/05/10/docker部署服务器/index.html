@@ -17,18 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>repository | JiangGuo</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="repository">
-<meta property="og:url" content="https://xiehans.github.io/repository/index.html">
+  <title>docker部署服务器 | JiangGuo</title>
+  <meta name="description" content="安装环境pip install aliyun-python-sdk-core-v3 pip install aliyun-python-sdk-sts   RabbitMQMQ并不是python内置的模块，而是一个需要你额外安装（ubunto可直接apt-get其余请自行百度。）的程序，安装完毕后可通过python中内置的pika模块来调用MQ发送或接收队列请求。接下来我们就看几种python调用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker部署服务器">
+<meta property="og:url" content="https://xiehans.github.io/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="Welcome to ShanZha&#39;s Blog">
+<meta property="og:description" content="安装环境pip install aliyun-python-sdk-core-v3 pip install aliyun-python-sdk-sts   RabbitMQMQ并不是python内置的模块，而是一个需要你额外安装（ubunto可直接apt-get其余请自行百度。）的程序，安装完毕后可通过python中内置的pika模块来调用MQ发送或接收队列请求。接下来我们就看几种python调用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-07T01:46:54.000Z">
-<meta property="article:modified_time" content="2022-05-07T01:46:54.991Z">
+<meta property="article:published_time" content="2022-05-10T01:18:38.000Z">
+<meta property="article:modified_time" content="2022-05-19T05:47:20.741Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://xiehans.github.io/repository/index.html">
+  <link rel="canonical" href="https://xiehans.github.io/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Welcome to ShanZha&#39;s Blog" type="application/atom+xml">
   
@@ -334,14 +337,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="page-" class="article article-type-page" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-docker部署服务器" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      repository
+      docker部署服务器
     </h1>
   
 
@@ -349,22 +352,51 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/repository/index.html" class="article-date">
-	  <time datetime="2022-05-07T01:46:54.000Z" itemprop="datePublished">2022-05-07</time>
+	<a href="/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+	  <time datetime="2022-05-10T01:18:38.000Z" itemprop="datePublished">2022-05-10</time>
 	</a>
 </span>
         
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/repository/index.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h1 id><a href="#" class="headerlink" title></a></h1><h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install aliyun<span class="token operator">-</span>python<span class="token operator">-</span>sdk<span class="token operator">-</span>core<span class="token operator">-</span>v3
+pip install aliyun<span class="token operator">-</span>python<span class="token operator">-</span>sdk<span class="token operator">-</span>sts <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><p>MQ并不是python内置的模块，而是一个需要你额外安装（ubunto可直接apt-get其余请自行百度。）的程序，安装完毕后可通过python中内置的pika模块来调用MQ发送或接收队列请求。接下来我们就看几种python调用MQ的模式（作者自定义中文形象的模式名称）与方法。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022193210">Python实现RabbitMQ中6种消息模型</a></p>
+<h3 id="RabbitMQ消息模型"><a href="#RabbitMQ消息模型" class="headerlink" title="RabbitMQ消息模型"></a>RabbitMQ消息模型</h3><p> 这里使用<strong>Python</strong>的<strong>pika</strong>这个库来实现RabbitMQ中常见的6种消息模型。没有的可以先安装：</p>
+<ol>
+<li><p>单生产单消费模型：即完成基本的一对一消息转发。</p>
+</li>
+<li><p>消息分发模型：多个收听者监听一个队列。</p>
+</li>
+<li><p>fanout消息订阅模式：生产者将消息发送到Exchange，Exchange再转发到与之绑定的Queue中，每个消费者再到自己的Queue中取消息。</p>
+</li>
+<li><p>direct路由模式：此时生产者发送消息时需要指定RoutingKey，即路由Key，Exchange接收到消息时转发到与RoutingKey相匹配的队列中。</p>
+</li>
+<li><p>topic匹配模式：更细致的分组，允许在RoutingKey中使用匹配符。</p>
+</li>
+<li><p>RPC远程过程调用：客户端与服务器之间是完全解耦的，即两端既是消息的发送者也是接受者。</p>
+</li>
+</ol>
+<h3 id="vhost"><a href="#vhost" class="headerlink" title="vhost"></a>vhost</h3><p>每一个 RabbitMQ 服务器都能创建 <strong>虚拟的消息服务器</strong>，称之为 <strong>虚拟主机（virtual host）</strong>，简称 <strong>vhost</strong>。</p>
+<p>vhost 本质上是一个独立的小型 RabbitMQ 服务器，拥有自己独立的队列、交换器、绑定关系等，并且 <strong>拥有自己独立的权限</strong>。</p>
+<p>vhost 可避免队列和交换器等命名冲突，<strong>vhost 之间是绝对隔离的</strong>，无法将 vhost1 中的交换器与 vhost2 中的队列进行绑定，这样的机制既保证了安全性，又确保可移植性。</p>
+<h2 id="docker常用的命令"><a href="#docker常用的命令" class="headerlink" title="docker常用的命令"></a>docker常用的命令</h2><p>其他常用命令如下：<br>退出容器：exit<br>进入容器：docker start -i containerID<br>查看已有容器：docker ps -a<br>查看已有镜像：docker images<br>删除容器：docker rm containerID<br>删除镜像：docker rmi imageNAME<br>将当前容器保存为一个镜像：docker commit -a “yaohui” containerID imageNAME<br>将当前镜像保存为一个压缩文件：docker save -o name.tar imageNAME</p>
+
       
     </div>
     <div class="article-footer">
@@ -373,7 +405,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://xiehans.github.io/repository/index.html" title="repository" target="_blank" rel="external">https://xiehans.github.io/repository/index.html</a>
+      <a href="https://xiehans.github.io/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="docker部署服务器" target="_blank" rel="external">https://xiehans.github.io/2022/05/10/docker部署服务器/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -416,6 +448,20 @@
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="IAR软件使用方法"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/05/07/AliyunPython/" title="AliyunPython"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
   
   <!-- Button trigger modal -->
@@ -531,6 +577,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+
+   
 
 
 

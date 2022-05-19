@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2022-05-19</lastmod>
+  </url>
+  <url>
+    <loc>https://xiehans.github.io/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2022-05-19</lastmod>
+  </url>
+  <url>
+    <loc>https://xiehans.github.io/2022/05/07/AliyunPython/</loc>
+    <lastmod>2022-05-19</lastmod>
+  </url>
+  <url>
+    <loc>https://xiehans.github.io/2022/05/05/Docker%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
     <loc>https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2022-05-07</lastmod>
   </url>
   <url>
     <loc>https://xiehans.github.io/2022/05/05/pytorch%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://xiehans.github.io/2022/05/05/Docker%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2022-05-06</lastmod>
   </url>
   <url>
