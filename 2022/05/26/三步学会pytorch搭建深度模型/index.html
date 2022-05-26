@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>三步学会pytorch搭建深度模型 | JiangGuo</title>
+  <meta name="description" content="本文从最简单的卷积神经网络开始了解pytorch的框架。以下涉及到的代码完整版请查看git完整代码 基于pytorch的DL主要分为三个模块，数据块，模型块，和训练块。具体如下： 1、   数据集pytorch提供有专门的数据下载，数据处理包，使用这些包可以极大地提高开发效率 1.1 torch.utils.data工具包该包中有两个常用的类，分别为Dataset和DataLoader Datas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三步学会pytorch搭建深度模型">
+<meta property="og:url" content="https://xiehans.github.io/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Welcome to ShanZha&#39;s Blog">
+<meta property="og:description" content="本文从最简单的卷积神经网络开始了解pytorch的框架。以下涉及到的代码完整版请查看git完整代码 基于pytorch的DL主要分为三个模块，数据块，模型块，和训练块。具体如下： 1、   数据集pytorch提供有专门的数据下载，数据处理包，使用这些包可以极大地提高开发效率 1.1 torch.utils.data工具包该包中有两个常用的类，分别为Dataset和DataLoader Datas">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/image-20220526200852357.png">
+<meta property="article:published_time" content="2022-05-26T12:07:19.000Z">
+<meta property="article:modified_time" content="2022-05-26T12:30:52.363Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiehans.github.io/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/image-20220526200852357.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://xiehans.github.io/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to ShanZha&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/XieHanS" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">浆果</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Alg &amp; SignalProcessing</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/XieHanS" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.cnblogs.com/xhslovecx" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">工程笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A1%AC%E4%BB%B6/" rel="tag">硬件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/python/" style="font-size: 13px;">python</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%AC%94%E8%AE%B0/" style="font-size: 13px;">工程笔记</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 14px;">服务器</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14px;">深度学习</a> <a href="/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 13px;">硬件</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/26/%E5%BC%82%E5%B8%B8%E5%80%BC%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95/" class="title">异常值检测算法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-26T12:27:37.000Z" itemprop="datePublished">2022-05-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="title">git常用命令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-26T12:25:56.000Z" itemprop="datePublished">2022-05-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" class="title">三步学会pytorch搭建深度模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-26T12:07:19.000Z" itemprop="datePublished">2022-05-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/26/%E9%87%8D%E6%9E%84%E5%B8%A6%E6%9D%83%E9%87%8D%E7%9A%84%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" class="title">重构带权重的深度模型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-26T11:35:56.000Z" itemprop="datePublished">2022-05-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="title">IAR软件使用方法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-05-19T03:14:51.000Z" itemprop="datePublished">2022-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-三步学会pytorch搭建深度模型" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      三步学会pytorch搭建深度模型
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" class="article-date">
+	  <time datetime="2022-05-26T12:07:19.000Z" itemprop="datePublished">2022-05-26</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>本文从最简单的卷积神经网络开始了解pytorch的框架。以下涉及到的代码完整版请查看git<a target="_blank" rel="noopener" href="https://github.com/XieHanS/CPSC_ECGHbClassify_demo.git">完整代码</a></p>
+<p>基于pytorch的DL主要分为三个模块，数据块，模型块，和训练块。具体如下：</p>
+<h1 id="1、-数据集"><a href="#1、-数据集" class="headerlink" title="1、   数据集"></a>1、   数据集</h1><p>pytorch提供有专门的数据下载，数据处理包，使用这些包可以极大地提高开发效率</p>
+<h2 id="1-1-torch-utils-data工具包"><a href="#1-1-torch-utils-data工具包" class="headerlink" title="1.1 torch.utils.data工具包"></a>1.1 torch.utils.data工具包</h2><p>该包中有两个常用的类，分别为<strong>Dataset</strong>和<strong>DataLoader</strong></p>
+<p>Dataset 一个抽象类，抽象类只能作为基类派生新类使用，不能创建抽象类对象。其他数据集需要继承这个类，并覆写其中的两个方法:</p>
+<pre class="line-numbers language-none"><code class="language-none">__getitem__ 和 __len__<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> Dataset<span class="token punctuation">,</span> DataLoader
+<span class="token keyword">class</span> <span class="token class-name">MyDataset</span><span class="token punctuation">(</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> data<span class="token punctuation">,</span> label<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  	self<span class="token punctuation">.</span>data <span class="token operator">=</span> data
+    self<span class="token punctuation">.</span>label <span class="token operator">=</span> label
+    
+  <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  	<span class="token keyword">return</span> <span class="token punctuation">(</span>torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">,</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>self<span class="token punctuation">.</span>label<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#把numpy转换为Tensor</span>
+
+  <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>   调用 _ _ getitem_ _ 只返回一个样本，因此需要一个批量读取的工具，pytorch为我们提供了另外一个类DataLoader。DataLoader 定义一个新的迭代器，实现批量读取，打乱数据并提供并行加速等功能</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">loader <span class="token operator">=</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>DataLoader<span class="token punctuation">(</span>
+  dataset <span class="token operator">=</span> datasets<span class="token punctuation">,</span>   <span class="token comment">#加载的数据集</span>
+  batch_size <span class="token operator">=</span> BATCH_SIZE<span class="token punctuation">,</span> <span class="token comment">#批大小</span>
+  shuffle <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span>     <span class="token comment">#是否将数据打乱，默认为false</span>
+  num_workers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token comment">#使用多进程加载的进程数，0代表不使用多进程</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用的时候只需要调用这两个类即可</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#继承Dataset类，自定义数据集以及对应的标签</span>
+dataset <span class="token operator">=</span> MyDataset<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> Y_train<span class="token punctuation">)</span>
+dataset_test <span class="token operator">=</span> MyDataset<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> Y_test<span class="token punctuation">)</span>
+<span class="token comment">#装载数据，实现批量读取</span>
+dataloader <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>dataset<span class="token punctuation">,</span> batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">)</span>
+dataloader_test <span class="token operator">=</span> DataLoader<span class="token punctuation">(</span>dataset_test<span class="token punctuation">,</span> batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">,</span> drop_last<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+ 
+<span class="token comment">#训练模型时候的数据循环</span>
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n_epoch<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> batch_idx<span class="token punctuation">,</span> batch <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>dataloader<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+        input_x<span class="token punctuation">,</span> input_y <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>batch<span class="token punctuation">)</span>
+        pred <span class="token operator">=</span> model<span class="token punctuation">(</span>input_x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="2、-定义模型"><a href="#2、-定义模型" class="headerlink" title="2、   定义模型"></a>2、   定义模型</h1><p>pytorch中自定义的模型往往继承自nn.Model，包括两个函数，初始化函数<code>__init__()</code>和forward()。<code>__init__()</code>定义了卷积层和其他层的参数，forward()规定了网络执行的顺序。例如下面的网络：</p>
+<p><code>__init__()</code>定义了两个卷积层conv1和conv2，和一个全连接层out层，两个卷积层里面分别包含了一维卷积，DropOut，ReLU激活和最大池化层。</p>
+<p>forward()定义了执行顺序。首先conv1，接着conv2，最后out层。由于上下层连接的问题，往往init里面会按照顺序撰写，而真正的执行顺序是forward里面的顺序。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">CNN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token builtin">super</span><span class="token punctuation">(</span>CNN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>conv1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span> <span class="token comment"># input shape (1, 1, 2000)</span>
+      nn<span class="token punctuation">.</span>Conv1d<span class="token punctuation">(</span>
+        in_channels<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>     <span class="token comment"># input height</span>
+        out_channels<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span>    <span class="token comment"># n_filters</span>
+        kernel_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>     <span class="token comment"># filter size</span>
+        stride<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>        <span class="token comment"># filter movement/step</span>
+        padding<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment"># output shape (16, 1, 2000)</span>
+      nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">#扔到0.2</span>
+      nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      nn<span class="token punctuation">.</span>MaxPool1d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment"># choose max value in 1x5 area, output shape (16, 1, 400)2000/5</span>
+    <span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>conv2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span> <span class="token comment"># input shape (16, 1, 400)</span>
+      nn<span class="token punctuation">.</span>Conv1d<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment"># output shape (32, 1, 400)</span>
+      nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">#扔掉0.2</span>
+      nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      nn<span class="token punctuation">.</span>MaxPool1d<span class="token punctuation">(</span>kernel_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment"># output shape (32, 1, 400/5=80)</span>
+    <span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>out <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">32</span> <span class="token operator">*</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment"># fully connected layer, output 3 classes</span>
+
+  <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> self<span class="token punctuation">.</span>conv1<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    x <span class="token operator">=</span> self<span class="token punctuation">.</span>conv2<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    x <span class="token operator">=</span> x<span class="token punctuation">.</span>view<span class="token punctuation">(</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>     
+    output <span class="token operator">=</span> self<span class="token punctuation">.</span>out<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> output<span class="token punctuation">,</span> x <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://www.processon.com/diagraming/5f8e903207912906db32acc2">https://www.processon.com/diagraming/5f8e903207912906db32acc2</a></p>
+<p>我们打印出模型如下：</p>
+<p><img src="/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/image-20220526200852357.png" alt="image-20220526200852357"></p>
+<h1 id="3、训练模型"><a href="#3、训练模型" class="headerlink" title="3、训练模型"></a>3、训练模型</h1><ul>
+<li><p>1）读数据，装载数据，随机批量分配</p>
+</li>
+<li><p>2）初始化自定义的模型类</p>
+</li>
+<li><p>3）定义优化器【SGD，自适应优化算法(RMSProp，Adam，Adadelta)】和损失函数【MSE(回归),crossEntropy(分类)】</p>
+</li>
+<li><p>4）定义epoch数量，for循环训练模型</p>
+<p># 初始化自定义的模型类</p>
+</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">model <span class="token operator">=</span> CNN<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+model<span class="token punctuation">.</span>verbose <span class="token operator">=</span> <span class="token boolean">False</span><span class="token comment">#运行的时候不显示详细信息</span>
+
+<span class="token comment"># 定义优化器和损失函数</span>
+LR <span class="token operator">=</span> <span class="token number">0.001</span>
+optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span>LR<span class="token punctuation">)</span>  
+loss_func <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span><span class="token punctuation">)</span>     
+
+<span class="token comment">#训练模型</span>
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n_epoch<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">.</span>train<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> batch_idx<span class="token punctuation">,</span> batch <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>dataloader<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+      input_x<span class="token punctuation">,</span> input_y <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>batch<span class="token punctuation">)</span>
+      pred <span class="token operator">=</span> model<span class="token punctuation">(</span>input_x<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+      loss <span class="token operator">=</span> loss_func<span class="token punctuation">(</span>pred<span class="token punctuation">,</span> input_y<span class="token punctuation">)</span>
+      optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#梯度置零</span>
+      loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#optimizer.step()是大多数optimizer所支持的简化版本。一旦梯度被如backward()之类的函数计算好后，就可以调用这个函数更新所有的参数。</span>
+      optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+      step <span class="token operator">+=</span> <span class="token number">1</span>
+	<span class="token comment"># test</span>
+	model<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#为了固定BN和dropout层,使得偏置参数不随着发生变化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>训练需要注意的几点：</p>
+<ul>
+<li>1）反向传播之前，优化器的梯度需要置零</li>
+<li>2）optimizer.step()是大多数optimizer所支持的简化版本。一旦梯度被如backward()之类的函数计算好后，就可以调用这个函数更新所有的参数</li>
+<li>3）model.eval()#训练完train_datasets之后,model要用来测试样本，model.eval()为了固定BN和dropout层,使得偏置参数不随着发生变化</li>
+</ul>
+<p>完整的代码<a target="_blank" rel="noopener" href="https://github.com/XieHanS/CPSC_ECGHbClassify_demo.git">https://github.com/XieHanS/CPSC_ECGHbClassify_demo.git</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://xiehans.github.io/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" title="三步学会pytorch搭建深度模型" target="_blank" rel="external">https://xiehans.github.io/2022/05/26/三步学会pytorch搭建深度模型/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/XieHanS" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/XieHanS" target="_blank"><span class="text-dark">浆果</span><small class="ml-1x">Alg &amp; SignalProcessing</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="git常用命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2022/05/26/%E9%87%8D%E6%9E%84%E5%B8%A6%E6%9D%83%E9%87%8D%E7%9A%84%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" title="重构带权重的深度模型"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/XieHanS" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.cnblogs.com/xhslovecx" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+	var infoEle = document.querySelector('#comments .info');
+	if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+		infoEle.childNodes.forEach(function(item) {
+		item.parentNode.removeChild(item);
+	});
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

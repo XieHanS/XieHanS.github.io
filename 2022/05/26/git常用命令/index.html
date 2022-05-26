@@ -17,34 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>IAR软件使用方法 | JiangGuo</title>
-  <meta name="description" content="[TOC] IAR Embedded Workbench IDE 使用方法0、软件安装网盘下载地址：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1edlsIZb4Pne13qAIx_y9dg?pwd&#x3D;dkh8 提取码：dkh8 软件版本：7.80.4 注：内网位置：\192.168.2.58\EcgDoctor_data\开发工具\IAR for ARM 7.8.4.rar 下载后解压该压缩包">
+  <title>git常用命令 | JiangGuo</title>
+  <meta name="description" content="1、	git diff &lt;name&gt; 查看文件的修改 2、	git log --pretty&#x3D;online 查看当前提交的日志 3、	git reset --hard HEAD^ 回退到上一个版本 4、	git reset --hard &lt;1094a&gt; 回退到制定版本 5、	git reflog 查看每次命令的commit id 6、	git checkout -">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IAR软件使用方法">
-<meta property="og:url" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="git常用命令">
+<meta property="og:url" content="https://xiehans.github.io/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Welcome to ShanZha&#39;s Blog">
-<meta property="og:description" content="[TOC] IAR Embedded Workbench IDE 使用方法0、软件安装网盘下载地址：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1edlsIZb4Pne13qAIx_y9dg?pwd&#x3D;dkh8 提取码：dkh8 软件版本：7.80.4 注：内网位置：\192.168.2.58\EcgDoctor_data\开发工具\IAR for ARM 7.8.4.rar 下载后解压该压缩包">
+<meta property="og:description" content="1、	git diff &lt;name&gt; 查看文件的修改 2、	git log --pretty&#x3D;online 查看当前提交的日志 3、	git reset --hard HEAD^ 回退到上一个版本 4、	git reset --hard &lt;1094a&gt; 回退到制定版本 5、	git reflog 查看每次命令的commit id 6、	git checkout -">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519134005237.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115357728.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115616114.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115812003.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519120206609.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519120313242.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220526192957199.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519113529754.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519113959652.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519113854258.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115109182.png">
-<meta property="og:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220526193159867.png">
-<meta property="article:published_time" content="2022-05-19T03:14:51.000Z">
-<meta property="article:modified_time" content="2022-05-26T11:32:14.782Z">
+<meta property="article:published_time" content="2022-05-26T12:25:56.000Z">
+<meta property="article:modified_time" content="2022-05-26T12:30:52.359Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="硬件">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519134005237.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+  <link rel="canonical" href="https://xiehans.github.io/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Welcome to ShanZha&#39;s Blog" type="application/atom+xml">
   
@@ -350,14 +337,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-IAR软件使用方法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-git常用命令" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      IAR软件使用方法
+      git常用命令
     </h1>
   
 
@@ -365,75 +352,52 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
-	  <time datetime="2022-05-19T03:14:51.000Z" itemprop="datePublished">2022-05-19</time>
+	<a href="/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+	  <time datetime="2022-05-26T12:25:56.000Z" itemprop="datePublished">2022-05-26</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E7%A1%AC%E4%BB%B6/" rel="tag">硬件</a>
+	<a class="article-tag-link-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h1 id="IAR-Embedded-Workbench-IDE-使用方法"><a href="#IAR-Embedded-Workbench-IDE-使用方法" class="headerlink" title="IAR Embedded Workbench IDE 使用方法"></a>IAR Embedded Workbench IDE 使用方法</h1><h2 id="0、软件安装"><a href="#0、软件安装" class="headerlink" title="0、软件安装"></a>0、软件安装</h2><p>网盘下载地址：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1edlsIZb4Pne13qAIx_y9dg?pwd=dkh8">https://pan.baidu.com/s/1edlsIZb4Pne13qAIx_y9dg?pwd=dkh8</a></p>
-<p>提取码：dkh8</p>
-<p>软件版本：7.80.4</p>
-<p>注：内网位置：\192.168.2.58\EcgDoctor_data\开发工具\IAR for ARM 7.8.4.rar</p>
-<p>下载后解压该压缩包，如下图：</p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519134005237.png" alt="image-20220519134005237"></p>
-<p>EWARM-CD-7804-12495.exe 为文件安装包，IARkg_Unis.exe 为激活工具。图片为激活步骤。</p>
-<p>安装破解文字说明步骤如下：</p>
-<p>1).下载IAR软件，然后点击安装，一路NEXT</p>
-<p>2).安装后激活，需要断网</p>
-<p>3).打开IAR软件，在软件目录中点击help/License manger</p>
-<p>4).弹出IAR License manager界面，点击license/offline activation</p>
-<p>5).出现license wizard界面</p>
-<p>6).打开注册机，将license number 赋值到 license wizard界面的license number</p>
-<p>7).在 license wizard界面点击“下一步”</p>
-<p>8).点击”NO”</p>
-<p>9).接下来会出现save activation information，选择一个地方存储activationinfo.txt文件</p>
-<p>10).点击“下一步”</p>
-<p>11).将第9步生成txt文件加载到注册机activate license中，点击activate license,会弹出另存生成一个activationresponse.txt文件</p>
-<p>12).在第10步界面，use the response file to activate the license,中将第11步产生文件加载进来，点击“下一步”，完成注册</p>
-<p>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30480583/article/details/96544349">https://blog.csdn.net/weixin_30480583/article/details/96544349</a></p>
-<h2 id="1、新建工作站"><a href="#1、新建工作站" class="headerlink" title="1、新建工作站"></a>1、新建工作站</h2><p>1）新建工作站</p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115357728.png" alt="image-20220519115357728"></p>
-<p>2）、新建工程，Project-&gt; Creat New Project 选择  Externally built executable，在弹出的对话框中命名工程名称，保存到某个地址。</p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115616114.png" alt="image-20220519115616114"></p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115812003.png" alt="image-20220519115812003"></p>
-<p>3）右键，Add -&gt; Add File 添加C/C++文件</p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519120206609.png" alt="image-20220519120206609"></p>
-<p>4）添加完成，工作站呈下面样子</p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519120313242.png" alt="image-20220519120313242"></p>
-<h2 id="2、生成静态库文件"><a href="#2、生成静态库文件" class="headerlink" title="2、生成静态库文件"></a>2、生成静态库文件</h2><h3 id="2-1-选择输出library文件"><a href="#2-1-选择输出library文件" class="headerlink" title="2.1 选择输出library文件"></a>2.1 选择输出library文件</h3><p>右键-&gt;Options</p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220526192957199.png" alt="image-20220526192957199"></p>
-<p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519113529754.png" alt="image-20220519113529754"></p>
-<h3 id="2-2-选择编译语言"><a href="#2-2-选择编译语言" class="headerlink" title="2.2 选择编译语言"></a>2.2 选择编译语言</h3><p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519113959652.png" alt="image-20220519113959652"></p>
-<h3 id="2-3-修改将要生成的库文件名字"><a href="#2-3-修改将要生成的库文件名字" class="headerlink" title="2.3 修改将要生成的库文件名字"></a>2.3 修改将要生成的库文件名字</h3><p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519113854258.png" alt="image-20220519113854258"></p>
-<h3 id="2-4-修改为release模式，默认为debug模式"><a href="#2-4-修改为release模式，默认为debug模式" class="headerlink" title="2.4 修改为release模式，默认为debug模式"></a>2.4 修改为release模式，默认为debug模式</h3><p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220519115109182.png" alt="image-20220519115109182"></p>
-<h3 id="2-5-生成库文件"><a href="#2-5-生成库文件" class="headerlink" title="2.5 生成库文件"></a>2.5 生成库文件</h3><p><img src="/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20220526193159867.png" alt="image-20220526193159867"></p>
-<h2 id="3、接口文件"><a href="#3、接口文件" class="headerlink" title="3、接口文件"></a>3、接口文件</h2><p>如果文件为.c后缀名，则可忽略下面操作。如果为C++，则需要添加</p>
-<p>这里是在include头文件的外面包裹了<code>extern &quot;C&quot; &#123; &#125;</code>，是告诉编译器以C语言的命名方式去加载这个符号。还有一种比较常见的方式是在头文件中进行编译声明，如下所示，这样的话，无论C还是C++直接正常<code>include</code>就可以使用了。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">__cplusplus</span></span>
-<span class="token keyword">extern</span> <span class="token string">"C"</span> <span class="token punctuation">&#123;</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
-
-<span class="token keyword">short</span> <span class="token function">getresult</span><span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">*</span>sigSeg<span class="token punctuation">,</span> <span class="token keyword">short</span> segLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">__cplusplus</span></span>
-<span class="token punctuation">&#125;</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <pre class="line-numbers language-none"><code class="language-none">1、	git diff &lt;name&gt; 查看文件的修改
+2、	git log --pretty&#x3D;online 查看当前提交的日志
+3、	git reset --hard HEAD^ 回退到上一个版本
+4、	git reset --hard &lt;1094a&gt; 回退到制定版本
+5、	git reflog 查看每次命令的commit id
+6、	git checkout -- &lt;file name&gt; 把文件在工作区的修改全部撤销，回到暂存区状态（消除 add . 操作）
+7、	git reset HEAD &lt;file name&gt; 把暂存区的修改撤销，重新回到工作区（消除commit操作，执行上一条命令，可全部撤销）
+8、	git branch 查看多有分支
+9、	git checkout -b &lt;name&gt; 创建并切换分支
+10、	git checkout &lt;branch name&gt; 切换分支
+11、	git branch -d &lt;branch name&gt; 合并之后删除分支
+12、	git branch -D &lt;branch name&gt; 未合并之前强制删除分支
+13、	git merge 合并分支，log下面不保留合并分支状态
+14、	git merge --no-ff -m &quot;merge with no-ff&quot; dev 合并保留log下分支合并的状态
+15、	git stash 储藏当前工作状态
+16、	git stash list 查看工作现场
+17、	git stash pop 恢复当前工作状态，并删除stash的内容
+18、	git stash apply 恢复当前工作状态，不删除stash内容
+19、	git stash drop 上一条命令执行完，已恢复到当前工作状态后，删除stash的内容
+20、	git cherry-pick &lt;commit id&gt; 将commit id修改的内容复制到当前分支
+21、	git checkout -b dev origin&#x2F;dev 创建远程origin的dev分支到本地
+22、	git push origin dev 推送到远程dev分支
+23、	git branch --set -upstream-to &lt;branch name&gt; origin&#x2F;&lt;branch name&gt; 建立本地分支和远程分支的链接
+24、	git log --graph --pretty&#x3D;oneline  --abbrev-commit 查看提交流图
+25、	git tag &lt;tag name&gt; &lt;commit id&gt; 给commit id这次提交打标签，标签和commit id 挂钩
+26、	git config --global alias.&quot;别名&quot; &quot;原命令&quot;，eg:git config --global alias.last &#39;log -l&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
       
@@ -444,7 +408,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://xiehans.github.io/2022/05/19/IAR%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="IAR软件使用方法" target="_blank" rel="external">https://xiehans.github.io/2022/05/19/IAR软件使用方法/</a>
+      <a href="https://xiehans.github.io/2022/05/26/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="git常用命令" target="_blank" rel="external">https://xiehans.github.io/2022/05/26/git常用命令/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -491,12 +455,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2022/05/26/%E9%87%8D%E6%9E%84%E5%B8%A6%E6%9D%83%E9%87%8D%E7%9A%84%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" title="重构带权重的深度模型"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2022/05/26/%E5%BC%82%E5%B8%B8%E5%80%BC%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95/" title="异常值检测算法"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2022/05/10/docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="docker部署服务器"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2022/05/26/%E4%B8%89%E6%AD%A5%E5%AD%A6%E4%BC%9Apytorch%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B/" title="三步学会pytorch搭建深度模型"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
