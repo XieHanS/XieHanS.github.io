@@ -38,8 +38,10 @@
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506200256359.png">
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194433973.png">
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194447702.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527103954165.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527104601665.png">
 <meta property="article:published_time" content="2022-05-05T09:15:27.000Z">
-<meta property="article:modified_time" content="2022-05-26T12:33:46.153Z">
+<meta property="article:modified_time" content="2022-05-27T02:49:14.477Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="工程笔记">
 <meta name="twitter:card" content="summary">
@@ -427,6 +429,24 @@ hexo new page categories<span aria-hidden="true" class="line-numbers-rows"><span
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194433973.png" alt="image-20220506194433973"></p>
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194447702.png" alt="image-20220506194447702"></p>
 <p>然后依次执行下面命令 hexo clean，hexo g，hexo s。即可在<a target="_blank" rel="noopener" href="http://localhost:4000/%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E3%80%82">http://localhost:4000/界面显示图片。</a></p>
+<h3 id="2-2-5-添加标签和类别"><a href="#2-2-5-添加标签和类别" class="headerlink" title="2.2.5 添加标签和类别"></a>2.2.5 添加标签和类别</h3><p>1）在hexo根目录的source文件夹下新建一个tags文件夹，然后在\source\tags文件夹里面会出现index.md文件。新建tags文件夹的快捷命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo new page &quot;tags&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>默认的index.md文件内容如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">title: &quot;tags&quot;
+type: tags
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2）编辑index.md文件，在文件中添加 layout。</p>
+<pre class="line-numbers language-none"><code class="language-none">title: &quot;tags&quot;
+type: tags
+layout: &quot;tags&quot;
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>layout后面的参数对应主题文件夹layout下第一级的布局文件。比如我采用的pure主题，对应的就是layout/tags.ejs。如下图所示，如果没有，那么就会出现空白的现象！如果你的tags文件的命名时abc.ejs，那么你就应该写成 layout: “abc”。</p>
+<p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527103954165.png" alt="image-20220527103954165"></p>
+<p>3）新建文件，在文件头的位置写上标签名字，部署之后网页上面就会显示对应的标签,如下图：</p>
+<p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527104601665.png" alt="image-20220527104601665"></p>
 <h1 id="3、部署在git"><a href="#3、部署在git" class="headerlink" title="3、部署在git"></a>3、部署在git</h1><p>1)、首先要有一个git账号，并新建一个仓库。需要注意的是，仓库名字最好为：用户名.github.io表示。例如用户名为test，则仓库名字最好为 test.github.io</p>
 <p>2)、安装 hexo-deployer-git</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -440,19 +460,21 @@ deploy:
     branch: gh-pages<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注意：branch选择 gh-pages。</p>
-<p>4)、部署</p>
+<p>4)、部署，</p>
 <pre class="line-numbers language-none"><code class="language-none">hexo clean
 hexo g
 hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>5、Hexo部署过程中出现错误</p>
+<p>5、Hexo部署过程中出现错误，可能是因为没有执行hexo clean。</p>
 <p>Error: Spawn failed</p>
-<p>解决办法</p>
+<p>解决办法 一）</p>
 <pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;hexo&#x2F;hanyubolg&#x2F;   ##进入站点根目录
 rm -rf .deploy_git&#x2F;				   ##删除git提交内容文件夹
 git config --global core.autocrlf false ##执行
 hexo clean &amp;&amp; hexo g &amp;&amp; hexo d ##最后<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>解决办法 二）</p>
+<p>重新执行 hexo clean -&gt; hexo g -&gt; hexo d  即可完美解决</p>
 
       
     </div>
