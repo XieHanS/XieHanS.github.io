@@ -40,8 +40,11 @@
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506194447702.png">
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527103954165.png">
 <meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527104601665.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527181731884.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527182403965.png">
+<meta property="og:image" content="https://xiehans.github.io/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527182515378.png">
 <meta property="article:published_time" content="2022-05-05T09:15:27.000Z">
-<meta property="article:modified_time" content="2022-05-27T02:49:14.477Z">
+<meta property="article:modified_time" content="2022-05-27T10:25:15.432Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="工程笔记">
 <meta name="twitter:card" content="summary">
@@ -371,9 +374,23 @@
 
 
         
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/#comments" class="article-comment-link">评论</a></span>
         
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
+	
+
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
@@ -403,20 +420,20 @@ hexo s	##在服务器运行<span aria-hidden="true" class="line-numbers-rows"><s
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220504123301939.png" alt="image-20220504123301939"></p>
 <p>在浏览器输入该地址即可显示如下图片</p>
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506204238480.png" alt="image-20220506204238480"></p>
-<h2 id="2-2-配置网站"><a href="#2-2-配置网站" class="headerlink" title="2.2 配置网站"></a>2.2 配置网站</h2><h2 id="2-2-1-主题"><a href="#2-2-1-主题" class="headerlink" title="2.2.1 主题"></a>2.2.1 主题</h2><p>1)、进入 <a target="_blank" rel="noopener" href="https://hexo.io/themes/index.html">https://hexo.io/themes/index.html</a> 预览主题，选择喜欢的主题下载。下载方法为，点击主题，进入主题的git地址，复制地址，clone。以pure为例，在git里面执行以下命令。</p>
+<h2 id="2-2-配置网站"><a href="#2-2-配置网站" class="headerlink" title="2.2 配置网站"></a>2.2 配置网站</h2><h3 id="2-2-1-主题"><a href="#2-2-1-主题" class="headerlink" title="2.2.1 主题"></a>2.2.1 主题</h3><p>1)、进入 <a target="_blank" rel="noopener" href="https://hexo.io/themes/index.html">https://hexo.io/themes/index.html</a> 预览主题，选择喜欢的主题下载。下载方法为，点击主题，进入主题的git地址，复制地址，clone。以pure为例，在git里面执行以下命令。</p>
 <pre class="line-numbers language-git" data-language="git"><code class="language-git">git clone https://github.com/cofess/hexo-theme-pure.git themes/pure<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>2)、将下载的主题的名字，复制到主目录的配置文件_config.yml中</p>
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506202608876.png" alt="image-20220506202608876"></p>
-<h2 id="2-2-2-中文字体"><a href="#2-2-2-中文字体" class="headerlink" title="2.2.2 中文字体"></a>2.2.2 中文字体</h2><p>1、首先进入主题的语言目录，查看主题支持的语言，目录：themes\pure\languages</p>
+<h3 id="2-2-2-中文字体"><a href="#2-2-2-中文字体" class="headerlink" title="2.2.2 中文字体"></a>2.2.2 中文字体</h3><p>1、首先进入主题的语言目录，查看主题支持的语言，目录：themes\pure\languages</p>
 <p>2、选择一种语言，填写在主目录的配置文件_config.yml中即可</p>
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220506201337277.png" alt="image-20220506201337277"></p>
-<h2 id="2-2-3-创建删除文章"><a href="#2-2-3-创建删除文章" class="headerlink" title="2.2.3 创建删除文章"></a>2.2.3 创建删除文章</h2><pre class="line-numbers language-none"><code class="language-none">hexo new 文件名   #创建文件
+<h3 id="2-2-3-创建删除文章"><a href="#2-2-3-创建删除文章" class="headerlink" title="2.2.3 创建删除文章"></a>2.2.3 创建删除文章</h3><pre class="line-numbers language-none"><code class="language-none">hexo new 文件名   #创建文件
 hexo d -g		 #删除文件，前提是先删除本地文件
 hexo new page tags
 hexo new page categories<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2-2-4-加载图片"><a href="#2-2-4-加载图片" class="headerlink" title="2.2.4  加载图片"></a>2.2.4  加载图片</h2><p>1)、要添加图片，首先要npm install 一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=hexo&spm=1001.2101.3001.7020">hexo</a>-asset-image的依赖</p>
+<h3 id="2-2-4-加载图片"><a href="#2-2-4-加载图片" class="headerlink" title="2.2.4  加载图片"></a>2.2.4  加载图片</h3><p>1)、要添加图片，首先要npm install 一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=hexo&spm=1001.2101.3001.7020">hexo</a>-asset-image的依赖</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>显示下面的信息，就说明安装成功。安装成功后，node_modules文件夹会存在hexo-asset-image文件夹</p>
@@ -447,6 +464,16 @@ layout: &quot;tags&quot;
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527103954165.png" alt="image-20220527103954165"></p>
 <p>3）新建文件，在文件头的位置写上标签名字，部署之后网页上面就会显示对应的标签,如下图：</p>
 <p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527104601665.png" alt="image-20220527104601665"></p>
+<h2 id="2-3-加入动态特效"><a href="#2-3-加入动态特效" class="headerlink" title="2.3 加入动态特效"></a>2.3 加入动态特效</h2><h3 id="2-3-1-加入跟随鼠标变动的线"><a href="#2-3-1-加入跟随鼠标变动的线" class="headerlink" title="2.3.1 加入跟随鼠标变动的线"></a>2.3.1 加入跟随鼠标变动的线</h3><p>在主题文件夹下layout文件夹中找到layout.ejs，添加下面代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-3-1-加入雪花飘落的图案"><a href="#2-3-1-加入雪花飘落的图案" class="headerlink" title="2.3.1 加入雪花飘落的图案"></a>2.3.1 加入雪花飘落的图案</h3><p>在\source\js目录下新建txt文件，然后将参考连接中对应的代码复制到txt文件中，再将文件名字和后缀名改成参考文件一致，如特效图一。然后在主题文件夹下layout文件夹中找到layout.ejs，添加下面代码，如特效图二</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"/js/snow2.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527181731884.png" alt="特效图一"></p>
+<p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527182403965.png" alt="特效图二"></p>
+<p>参考连接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41287260/article/details/103050877">(77条消息) hexo+yilia添加背景特效_秦时明月之君临天下的博客-CSDN博客</a></p>
+<p><img src="/2022/05/05/Hexo%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E7%BD%91%E7%AB%99/image-20220527182515378.png" alt="image-20220527182515378"></p>
 <h1 id="3、部署在git"><a href="#3、部署在git" class="headerlink" title="3、部署在git"></a>3、部署在git</h1><p>1)、首先要有一个git账号，并新建一个仓库。需要注意的是，仓库名字最好为：用户名.github.io表示。例如用户名为test，则仓库名字最好为 test.github.io</p>
 <p>2)、安装 hexo-deployer-git</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -656,6 +683,8 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
    
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 
 
@@ -698,4 +727,5 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 </body>
+<script type="text/javascript" src="/js/snow2.js"></script>
 </html>
